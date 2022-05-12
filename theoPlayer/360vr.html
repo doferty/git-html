@@ -20,31 +20,24 @@
     <script type="text/javascript" src="https://cdn.myth.theoplayer.com/aa9f2fae-a943-420c-bd08-273678f4c036/THEOplayer.js"></script>
 
     <script>
-        var element = document.querySelector(".theoplayer-container");
-        var player = new THEOplayer.Player(element, {
-            libraryLocation: "https://cdn.myth.theoplayer.com/aa9f2fae-a943-420c-bd08-273678f4c036",
-            fluid: true,
-            ui : {
-                width: '800px',
-                height: '500px'
-            }     
-        });
+var element = document.querySelector('.theoplayer');
+var player = new THEOplayer.Player(element, {
+    fluid: true
+});
 
-        // OPTIONAL CONFIGURATION
-        // Customized video player parameters
-        player.source = {
-            sources: {
-                "src": "https://cdn3.wowza.com/1/K2xweXk1ZHdhQkhB/c2pTdUFP/hls/live/playlist.m3u8,
-                "type": "application/x-mpegurl"
-            },
-            // VR configuration
-            vr: {
-                "360": true
-            }
-        };
+player.source = { 
+    sources: { 
+        type : 'application/x-mpegurl',
+        src : 'https://cdn3.wowza.com/1/K2xweXk1ZHdhQkhB/c2pTdUFP/hls/live/playlist.m3u8'
+    },
+    vr: {
+        360: true
+    }
+};
+</script>
 
-        player.preload = 'auto';
-    </script>
+
+
 </body>
 
 </html>
