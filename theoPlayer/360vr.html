@@ -29,22 +29,35 @@
         // OPTIONAL CONFIGURATION
 
         // Customized video player parameters
-        player.source = {
-            sources: [{
-                "src": "https://cdn3.wowza.com/1/K2xweXk1ZHdhQkhB/c2pTdUFP/hls/live/playlist.m3u8",
-                "type": "application/x-mpegurl",
-                "lowLatency": false
-            }],
-                vr: {
+        
+        player.source = { 
+    sources: { 
+        type : 'application/x-mpegurl',
+        src : 'https://cdn3.wowza.com/1/K2xweXk1ZHdhQkhB/c2pTdUFP/hls/live/playlist.m3u8'
+    },
+    vr: {
         360: true
     }
-            // Advertisement configuration
-            ads: [{
-                "sources": "//cdn.theoplayer.com/demos/preroll.xml",
-                "timeOffset": "start",
-                "skipOffset": 2
-            }]
-        };
+};
+    
+        
+        
+//         player.source = {
+//             sources: [{
+//                 "src": "https://cdn3.wowza.com/1/K2xweXk1ZHdhQkhB/c2pTdUFP/hls/live/playlist.m3u8",
+//                 "type": "application/x-mpegurl",
+//                 "lowLatency": false
+//             }],
+//                 vr: {
+//         360: true
+//     }
+//             // Advertisement configuration
+//             ads: [{
+//                 "sources": "//cdn.theoplayer.com/demos/preroll.xml",
+//                 "timeOffset": "start",
+//                 "skipOffset": 2
+//             }]
+//         };
 
         player.preload = 'auto';
 
