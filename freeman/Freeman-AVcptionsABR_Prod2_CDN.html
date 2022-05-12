@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<script type="text/javascript" src="https://cdn.myth.theoplayer.com/f097a191-d556-4ac7-8f83-830f9ac3eca9/THEOplayer.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.myth.theoplayer.com/f097a191-d556-4ac7-8f83-830f9ac3eca9/ui.css" />
+<div class="theoplayer-container video-js theoplayer-skin vjs-16-9"></div>
+<script>
+
+
+
+
+var element = document.querySelector(".theoplayer-container");
+var player = new THEOplayer.Player(element, {
+    libraryLocation: "https://cdn.myth.theoplayer.com/f097a191-d556-4ac7-8f83-830f9ac3eca9"
+});
+
+// OPTIONAL CONFIGURATION
+// Customized video player parameters
+player.source = {
+    sources: [{
+//        "src": "https://stream.onlineeventplus.com/live/smil:multiAudioABR.smil/playback.m3u8",
+//         "src": "https://dc64ftik47sy3.cloudfront.net/live/smil:multiAudioABR.smil/playback.m3u8",
+//         "src": "https://freemanlab.azureedge.net/live/smil:multiAudioABR.smil/playback.m3u8",
+         "src": "https://cdn3.wowza.com/5/QVFtRzBFSk9oSWI4/live/smil:multiAudioABR.smil/playback.m3u8",
+        "type": "application/x-mpegurl"
+    }]
+};
+</script>
+
+</body>

@@ -1,0 +1,319 @@
+<html>
+<head>
+	<title>Mobile Telemetry</title>
+	<script type="text/javascript" src="data.js"></script>
+	
+	   <!-- THEOplayer library and css -->
+    <script type="text/javascript" src="THEOplayer/THEOplayer.js"></script>
+    <link rel="stylesheet" type="text/css" href="THEOplayer/ui.css" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsLDo0S5wrherF9mOE_k21DHjys0mFWE4&callback=initMap" async defer></script>
+
+	<style>
+
+	body {
+		font-family:Arial;
+	}
+
+	#playerElement {
+		position:absolute;
+		bottom:22px;
+		left:60px;
+		height:640px;
+		width:480px;
+	}
+
+
+
+	#compass {
+		position:absolute;
+		bottom:114px;
+		right:230px;
+		height:150px;
+		width:150px;
+	}
+
+	#compass_bg {
+		position:absolute;
+		box-sizing: border-box;
+		padding:0;
+		margin:0;
+		height:150px;
+		width:150px;
+		background-image:url('compass_bg.png');
+		background-size: 150px 150px;
+	}
+	#compass_needle {
+		position:absolute;
+		height:126px;
+		width:12px;
+		padding:0;
+		margin:0;
+		left:69px;
+		top:12px;
+		background-image:url('compass_needle.png');
+		background-size: 12px 126px;
+		transform: rotate(0);
+	}
+
+
+	#altimeter {
+		position:absolute;
+		bottom:114px;
+		right:50px;
+
+		box-sizing: border-box;
+		padding:0;
+		margin:0;
+		height:150px;
+		width:150px;
+		background-image:url('altimeter_bg.png');
+		background-size: 150px 150px;
+	}
+
+	#altimeter_1000hand {
+		position:absolute;
+		height:126px;
+		width:2px;
+		padding:0;
+		margin:0;
+		left:74px;
+		top:12px;
+		background-image:url('altimeter_littlehand.png');
+		background-size: 2px 126px;
+		transform: rotate(0);
+	}
+
+	#altimeter_100hand {
+		position:absolute;
+		height:126px;
+		width:10px;
+		padding:0;
+		margin:0;
+		left:70px;
+		top:12px;
+		background-image:url('altimeter_bighand.png');
+		background-size: 10px 126px;
+		transform: rotate(0);
+	}
+
+	#altimeter_10hand {
+		position:absolute;
+		height:126px;
+		width:6px;
+		padding:0;
+		margin:0;
+		left:72px;
+		top:12px;
+		background-image:url('altimeter_littlehand.png');
+		background-size: 6px 126px;
+		transform: rotate(0);
+	}
+
+
+	#altimeter_knob {
+		position:absolute;
+		height:12px;
+		width:12px;
+		padding:0;
+		margin:0;
+		left:69px;
+		top:69px;
+		background-image:url('altimeter_knob.png');
+		background-size: 12px 12px;
+	}
+
+
+	#telemetryData {
+		position:absolute;
+		bottom:22px;
+		right:50px;
+
+		box-sizing: border-box;
+		height:72px;
+		width:330px;
+		margin-top:10px;
+		border: 0;
+		font-family:monospace;
+		overflow:none;
+		background-color:rgba(0,0,0,0.5);
+		padding:1em 0.5em;
+		color:#aff;
+	}
+	</style>
+</head>
+
+<body onload="doOnLoad();">
+    <div id="map" style="position:absolute;top:0;left:0;width:100%;height:100%;padding:0;border:0;"></div>
+       
+    <div class="wowza_player video-js theoplayer-skin"></div>
+     
+		<script>   
+            var element = document.querySelector(".wowza_player");
+        	var player = new THEOplayer.Player(element, {
+            libraryLocation: "THEOplayer",
+            license: "sZP7IYe6T6Pe3SerTS5oC6klTS0LFSacISC-Cl410ZzrCL1eCKft0leZCKC6FOPlUY3zWokgbgjNIOf9fl4e3SRo3Lb_FS0rIDf-3ufi3Oz_3o36FSRiCSBt3Lh_0lxKTmfVfK4_bQgZCYxNWoryIQXzImf90Sbi0S0LTuai0u5i0Oi6Io4pIYP1UQgqWgjeCYxgflEc3lar0Sbt3lbr0SfkFOPeWok1dDrLYtA1Ioh6TgV6v6fVfKcqCoXVdQjLUOfVfGxEIDjiWQXrIYfpCoj-fgzVfKxqWDXNWG3ybojkbK3gflNWf6E6FOPVWo31WQ1qbta6FOPzdQ4qbQc1sD4ZFK3qWmPUFOPLIQ-LflNWfK1zWDikfgzVfG3gWKxydDkibK4LbogqW6f9UwPkIYz"
+
+        });
+        
+        	// Customized video player parameters
+        	player.source = {
+            	sources: [{
+                	"src": "http://10.0.30.195:1935/vod/mp4:bike.mp4/playlist.m3u8",
+                	"type": "application/x-mpegurl",
+                	"lowLatency": false,
+            	}]
+         	};
+
+        	player.preload = 'auto';
+        	player.muted = 'true';
+        	player.autoplay = 'true';
+
+
+		</script>
+
+	</div>
+
+
+	<div id="compass">
+		<div id="compass_bg"></div>
+		<div id="compass_needle"></div>
+	</div>
+
+
+	<div id="altimeter">
+		<div id="altimeter_1000hand"></div>
+		<div id="altimeter_100hand"></div>
+		<div id="altimeter_10hand"></div>
+		<div id="altimeter_knob"></div>
+	</div>
+
+	<div id="telemetryData"></div>
+
+
+<script type="text/javascript">
+	var LastTelemetry = { lat:0, lon:0, alt:0, crs:0 };
+	var myIndex = 0;
+	var nextEventId = 0;
+	var updateMap = true;
+	var map = null;
+	var marker = null;
+	var pos = {lat: 39.53386, lng: -106.0643};
+
+	function doOnLoad()
+	{
+		insertNextEvent();
+		var intervalID = setInterval(function(){ insertNextEvent(); }, 1000);
+
+	}
+
+	function insertNextEvent()
+	{
+		onTelemetry(fakeData[nextEventId%fakeData.length]);
+		nextEventId++;
+	}
+
+	function setAltitude(altitude)
+	{
+		var hand1000 = document.getElementById('altimeter_1000hand');
+		var hand100 = document.getElementById('altimeter_100hand');
+		var hand10 = document.getElementById('altimeter_10hand');
+
+		// 360deg per 10000 ft
+		var hand1000rotation = (altitude % 10000) * 360 / 10000;
+		hand1000.style.transform = 'rotate('+hand1000rotation+'deg)';
+
+		// 360deg per 1000 ft
+		var hand100Rotation = (altitude % 1000) * 360 / 1000;
+		hand100.style.transform = 'rotate('+hand100Rotation+'deg)';
+
+		// 360deg per 100 ft
+		var hand10Rotation = (altitude % 100) * 360 / 100;
+		hand10.style.transform = 'rotate('+hand10Rotation+'deg)';
+	}
+
+	function setCompassHeading(heading)
+	{
+		var compass = document.getElementById('compass_bg');
+		compass.style.transform = 'rotate('+(0-heading)+'deg)';
+	}
+
+	function initMap()
+	{
+		map = new google.maps.Map(document.getElementById('map'), {
+		center: pos,
+		zoom: 15
+		});
+
+		//var infoWindow = new google.maps.InfoWindow({map: map});
+		//infoWindow.setPosition(pos);
+	}
+
+	function onTelemetry(jsonData)
+	{
+		//console.log("["+myIndex+"]: "+jsonData);
+
+		myIndex++;
+
+		var telemetryData = JSON.parse(jsonData);
+
+		//console.log(telemetryData);
+
+		function round(num)
+		{
+			return Math.round(num*10000)/10000;
+		}
+
+		var telemetryString = '<div>';
+		telemetryString += '<b>'+telemetryData['Time']+'</b><br />';
+		telemetryString += '&nbsp;Lat:'+round(telemetryData['Latitude']);
+		telemetryString += ' Lon:'+round(telemetryData['Longitude']);
+		telemetryString += ' Alt:'+round(telemetryData['Altitude']);
+		telemetryString += '<br />';
+		telemetryString += '&nbsp;Crs:'+round(telemetryData['Course']);
+		telemetryString += ' Spd:'+round(2.23*telemetryData['Speed']);
+		telemetryString += '</div>';
+
+		document.getElementById('telemetryData').innerHTML = telemetryString;
+
+		var newLat = telemetryData['Latitude'];
+		var newLon = telemetryData['Longitude'];
+		var newAlt = telemetryData['Altitude'];
+		var newCrs = telemetryData['Course'];
+
+
+		if (newLat != LastTelemetry.lat || newLon != LastTelemetry.lon)
+		{
+			var newPos = {lat: newLat, lng: newLon};
+
+			if (marker != null)
+				marker.setMap(null);
+
+			marker = new google.maps.Marker({
+			position: newPos,
+			map: map,
+			title: "GoCoder"
+			});
+
+			if (updateMap)
+			{
+				LastTelemetry.lat = newLat;
+				LastTelemetry.lon = newLon;
+				//document.getElementById('gmap').src = 'https://www.google.com/maps/embed/v1/view?center='+LastTelemetry.lat+','+LastTelemetry.lon+'&zoom=18&key=AIzaSyBmVoMWkoIRs-B79k7d5uy9o7FjfWvpzKI';
+			}
+			//updateMap = false;
+		}
+		if (newAlt != LastTelemetry.alt)
+		{
+			LastTelemetry.alt = newAlt;
+			setAltitude(LastTelemetry.alt);
+		}
+		if (newCrs != LastTelemetry.crs)
+		{
+			LastTelemetry.crs = newCrs;
+			setCompassHeading(LastTelemetry.crs);
+		}
+	}
+</script>
+
+</body>
+</html>

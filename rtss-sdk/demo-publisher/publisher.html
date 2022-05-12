@@ -1,0 +1,112 @@
+<script src="./wowzarts.umd.js"></script>
+<script src="./media.js"></script>
+<script src="./publisher.js"></script>
+
+<style>
+  #stats {
+    display: none;
+  }
+
+  #stats.show {
+    display: block;
+  }
+
+  #stats table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #stats table td, #stats table th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  #stats table tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+</style>
+
+<div>
+  <h1>Publish</h1>
+  <br />
+  <h3 id="broadcast-status-label">READY!</h3> <h3 id="broadcast-viewers"></h3>
+  <table>
+    <tr>
+      <td>
+        <label for="sname">Stream Name:</label>
+        <br/>
+        <input type="text" id="sname" name="sname" size="100" />
+        <br/>
+        <label for="token">Token:</label>
+        <br/>
+        <input type="text" id="token" name="token" size="100" />
+        <br/>
+      </td>
+      <td>
+
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <video muted autoplay controls width="854" height="480" id="wowzarts-media-video" style="display: block;margin: 0 auto;"></video>
+      </td>
+    </tr>
+  </table>
+  <br />
+  <fieldset>
+    Codec: <select id='codec-select' onchange="wowzartsPublisher.changeCodec(this)"> </select>
+    Scalability mode: <select id='scalability-mode-select' onchange="wowzartsPublisher.changeScalability(this)"></select>
+
+    </select>
+    Bitrate: <select id='bitrate-select' onchange="wowzartsPublisher.updateBitrate(this)">
+      <option value="0" default>Unlimited</option>
+      <option value="2000">2000</option>
+      <option value="1000">1000</option>
+      <option value="500">500</option>
+      <option value="250">250</option>
+      <option value="125">125</option>
+    </select>
+    <button id="input-source-btn" onclick="wowzartsPublisher.changeVideoInputSource()">Show Desktop</button>
+  </fieldset>
+  <fieldset>
+    <button onclick="wowzartsPublisher.start()">
+      Start broadcast
+    </button>
+    <button onclick="wowzartsPublisher.stop()">
+      Stop broadcast
+    </button>
+  </fieldset>
+  <br>
+  <div id="stats">
+    <table>
+      <tr>
+        <th>MediaTrack</th>
+        <th>Id</th>
+        <th>Codec</th>
+        <th>Frame Width</th>
+        <th>Frame Height</th>
+        <th>Quality limitation reason</th>
+        <th>FPS</th>
+        <th>Bytes sent (total)</th>
+        <th>Bitrate (kbps)</th>
+        <th>Timestamp</th>
+      </tr>
+      <tbody id='tracks-info'>
+
+      </tbody>
+    </table>
+    <br>
+    <table>
+      <tr>
+        <th>Candidate type</th>
+        <th>Available outgoing bitrate (kbps)</th>
+        <th>Current RTT (sec.)</th>
+        <th>Total RTT (sec.)</th>
+      </tr>
+      <tbody id='candidate-info'>
+      </tbody>
+    </table>
+  </div>
+</div>

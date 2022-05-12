@@ -1,0 +1,53 @@
+<smil>
+<head>
+</head>
+<body>
+<switch>
+<video src="mp4:Encoder1" system-language="en" title="English" audio-bitrate="105768">
+<param name="audioOnly" value="TRUE" valuetype="data"/>
+<param name="cupertinoTag" value="EXT-X-MEDIA" valuetype="data"/>
+<param name="cupertinoTag.GROUP-ID" value="aac" valuetype="data"/>
+<param name="cupertinoTag.DEFAULT" value="YES" valuetype="data"/>
+<param name="cupertinoTag.AUTOSELECT" value="YES" valuetype="data"/>
+</video>
+<video src="mp4:Encoder1_Encoder2_audio" system-language="de" title="Deutsch" audio-bitrate="105768">
+<param name="audioOnly" value="TRUE" valuetype="data"/>
+<param name="cupertinoTag" value="EXT-X-MEDIA" valuetype="data"/>
+<param name="cupertinoTag.GROUP-ID" value="aac" valuetype="data"/>
+<param name="cupertinoTag.DEFAULT" value="NO" valuetype="data"/>
+<param name="cupertinoTag.AUTOSELECT" value="YES" valuetype="data"/>
+</video>
+<video src="mp4:Encoder1_Encoder3_audio" system-language="fr" title="French" audio-bitrate="105768">
+<param name="audioOnly" value="TRUE" valuetype="data"/>
+<param name="cupertinoTag" value="EXT-X-MEDIA" valuetype="data"/>
+<param name="cupertinoTag.GROUP-ID" value="aac" valuetype="data"/>
+<param name="cupertinoTag.DEFAULT" value="NO" valuetype="data"/>
+<param name="cupertinoTag.AUTOSELECT" value="NO" valuetype="data"/>
+</video>
+<video src="mp4:Encoder1_source" system-language="en" title="Source" video-bitrate="2274910" width="1280" height="720">
+<param name="videoCodecId" value="avc1.66.30" valuetype="data"/>
+<param name="videoOnly" value="TRUE" valuetype="data"/>
+<param name="cupertinoTag.AUDIO" value="aac" valuetype="data"/>
+<param name="audioCodecId" value="mp4a.40.2" valuetype="data"/>
+</video>
+<video src="mp4:Encoder1_720p" system-language="en" title="720p" video-bitrate="1300000" width="1280" height="720">
+<param name="videoCodecId" value="avc1.66.30" valuetype="data"/>
+<param name="videoOnly" value="TRUE" valuetype="data"/>
+<param name="cupertinoTag.AUDIO" value="aac" valuetype="data"/>
+<param name="audioCodecId" value="mp4a.40.2" valuetype="data"/>
+</video>
+<video src="mp4:Encoder1_360p" system-language="en" title="360p" video-bitrate="2850000" width="640" height="360">
+<param name="videoCodecId" value="avc1.66.30" valuetype="data"/>
+<param name="videoOnly" value="TRUE" valuetype="data"/>
+<param name="cupertinoTag.AUDIO" value="aac" valuetype="data"/>
+<param name="audioCodecId" value="mp4a.40.2" valuetype="data"/>
+</video>
+
+<textstream src="Encoder1" system-language="eng,ger,pol">
+<param name="isWowzaCaptionStream" value="true" />
+<param name="wowzaCaptionIngestType" value="onTextData" />
+</textstream>
+</switch>
+</body>
+</smil>
+

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="icon" href="https://www.wowza.com/wp-content/themes/wowzav1/webrtc-ui/wordpress-dev/1.1.6/images/favicon.ico" type="image/x-icon"/>
+  <link rel="stylesheet" type="text/css" href="https://www.wowza.com/wp-content/themes/wowzav1/webrtc-ui/wordpress-dev/1.1.6/css/main.css" />
+  <link rel="stylesheet" type="text/css" href="https://www.wowza.com/wp-content/themes/wowzav1/webrtc-ui/wordpress-dev/1.1.6/css/wowza-streaming-dev.css" />
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/sidebyside.css">
+  <script type="text/javascript" src="./js/load.js"></script>
+  <title>Scaled WebRTC Publisher</title>
+</head>
+<body>
+	<p></p>
+	<p></p>
+
+        <div class="container">
+                <div class="row" align="center">
+                                <div class="column">
+                                        <iframe id="frame1" src="publishloaddata.png" class="center-iframe" scrolling="no"  style="background: #FFFFFF;height:500px;width:571px;border:0px black solid;" title="publisher"></iframe>
+                                </div>
+                                <div class="column">
+                                        <iframe id="frame2" src="playloaddata.png" class="center-iframe" scrolling="no"  style="background: #FFFFFF;height:500px;width:571px;border:0px black solid;" title="publisher"></iframe>
+                                </div>
+                </div>
+        </div>
+<p></p>
+ 
+        <div class="list-group align-items-center" id="callback">
+			<div class="row">
+			
+        <form id="loadparams">
+
+        <table width="200" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td><label for="sname">Stream Name:</label>
+                <input type="text" id="sname" name="sname" value="a9c838fb8e4647e4a1208eef37546553" size="100" />
+            </td>
+          </tr>
+          <tr>
+            <td><label for="token">Token:</label>
+                <input type="text" id="token" name="token" value="900d3d44cd517e2f009ed29772a8c1bc78edf1bf85bd17aef833527116783f2a" size="100" />
+            </td>
+          </tr>
+        </table>
+	<p></p>
+        <input class="button" name="submit" type="button" value="Load Data" onclick="streamSetup()" />
+        </form>
+	</input>
+			</div>
+		 </div>
+	   </div>	
+	<p></p>
+	
+</body>
+</html>
