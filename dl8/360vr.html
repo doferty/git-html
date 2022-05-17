@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="//cdn.delight-vr.com/latest/dl8-caa3f0e53b822ba15602ac312a2168312c743cb3.js" async></script>
+
+  <meta name="dl8-customization-no-brand-logo">
+  <meta name="dl8-customization-no-brand-watermark-logo">
+
+<dl8-video title="Example Video" author="Jane Doe" format="STEREO_180_LR"
+            poster="example.jpg" display-mode="inline" loop>
+    <source src="example.mp4" type="video/mp4" />
+    <source src="example.webm" type="video/webm" />
+ </dl8-video>
+</head>
+<body>
+<dl8-video title="Example Video" author="Jane Doe" format="STEREO_360_LR"
+            poster="example.jpg" display-mode="inline" loop>
+    <source src="example.mp4" type="video/mp4" />
+    <source src="example.webm" type="video/webm" />
+ </dl8-video>
+</body>
+</html>
+
+
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="https://www.wowza.com/wp-content/themes/wowzav1/webrtc-ui/wordpress-dev/1.1.6/css/main.css" />
+  <link rel="stylesheet" type="text/css" href="css/live360.css" />
+  <link rel="icon" href="https://www.wowza.com/wp-content/themes/wowzav1/webrtc-ui/wordpress-dev/1.1.6/images/favicon.ico" type="image/x-icon"/>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2.2.1/src/js.cookie.js" integrity="sha256-P8jY+MCe6X2cjNSmF4rQvZIanL5VwUUT4MBnOMncjRU=" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="https://webrtchacks.github.io/adapter/adapter-latest.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="//cdn.delight-vr.com/latest/dl8-caa3f0e53b822ba15602ac312a2168312c743cb3.js" async></script>
+  <title>WebRTC Playback Test for Wowza Streaming Engine</title>
+  <meta name="description" content="Wowza Streaming Engine customers can now test WebRTC playback. See what your viewers would see without leaving your browser.">
+  <meta name="dl8-customization-no-brand-logo">
+  <meta name="dl8-customization-no-brand-watermark-logo">
+</head>
+<body>
+<div id="build">1.1.6 kcm25065</div>
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-sm navbar-light bg-light pb-3 pb-md-2" id="top-nav">
+    <a class="navbar-brand" href="http://www.wowza.com"><img class="noll" src="https://www.wowza.com/wp-content/themes/wowzav1/webrtc-ui/wordpress-dev/1.1.6/images/wowza-logo.svg" alt="Wowza Media Systems" /></a>
+    <ul class="navbar-nav mr-auto-lg">
+      <li class="nav-item page">
+        <span></span></li>
+      <li class="nav-item page">
+        <span></span></li>
+    </ul>
+    <ul class="navbar-nav ml-auto d-none d-md-flex">
+    </ul>
+  </nav>
+  <div class="row justify-content-center" id="transcoder-warning" style="display:none;">
+    <div class="col-12 alert alert-warning p-2 text-center">
+      Please visit <a href="https://cloud.wowza.com">cloud.wowza.com</a> to start your live stream.</div>
+  </div>
+  <div class="row justify-content-center invisible mt-3" id="error-panel">
+    <div class="col-10 alert alert-danger alert-dismissible p-2">
+      <button id="error-panel-close" type="button" class="close" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <div id="error-messages">&nbsp;</div>
+    </div>
+  </div>
+  <div class="container-fluid" id="play-content">
+      <div class="row justify-content-center" id="play-settings" >
+        <form id="play-settings-form">
+          <div class="row">
+              <div class="form-group">
+                <input type="hidden" class="form-control" id="playSdpURL" name="playSdpURL" style="width: 300px;"></div>
+              <div class="form-group">
+                <input type="hidden" class="form-control" id="playApplicationName" name="playApplicationName" style="width: 200px;"></div>
+              <div class="form-group">
+                <input type="hidden" class="form-control" id="playStreamName" name="playStreamName" style="width: 150px;"></div>
+          </div>
+	      <button id="play-toggle" type="button" class="btn">Play</button></div>
+        <div class="row justify-content-center">
+                <div id="play-video-container" style="padding-bottom: 0px; margin-bottom: 10px; width: 100%;">
+                        <dl8-live-video format="MONO_360" not-pausable crossorigin="*" fps="30"  >
+                        </dl8-live-video>
+                </div>
+         </div>
+
+
+        </form>
+<script type="module" src="./lib/play.js"></script>
+<div>
+  <span id="sdpDataTag"></span></div>
+      </div>
+  </div>
+</div>
+
+</body>
+</html>
+ -->
